@@ -27,8 +27,7 @@ window.renderStatistics = function (ctx, names, times) {
     let coefficient = times[index] / maxtime;
     if (names[index] === "Вы") {
       ctx.fillStyle = "rgba(255, 0, 0, 1)";
-    }
-    else {
+    } else {
       ctx.fillStyle = "hsl(235," + getRandomInt(0, 100) + "%, 50%)";
     }
     ctx.fillRect(CLOUD_X0 + CLOUD_BORDER + HISTOGRAM_W + index * HISTOGRAM_SPAN, CLOUD_Y0 + HISTOGRAM_H + FONT_HEIGHT * 3, HISTOGRAM_W, -HISTOGRAM_H * coefficient);
