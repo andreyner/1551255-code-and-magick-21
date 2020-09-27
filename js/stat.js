@@ -13,8 +13,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var renderStatistics = function (ctx, names, times) {
-
+window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
   ctx.fillRect(CLOUD_X0 + SHADOW_SHIFT, CLOUD_Y0 + SHADOW_SHIFT, CLOUD_W, CLOUD_H);
   ctx.fillStyle = "rgba(255, 255, 255, 1)";
