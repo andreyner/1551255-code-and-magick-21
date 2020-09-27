@@ -26,7 +26,7 @@ var renderStatistics = function (ctx, names, times) {
   let maxtime = Math.max.apply(null, times);
   for (let index = 0; index < names.length; index++) {
     let coefficient = times[index] / maxtime;
-    if (names[index] == "Вы") {
+    if (names[index] === "Вы") {
       ctx.fillStyle = "rgba(255, 0, 0, 1)";
     }
     else {
@@ -37,7 +37,4 @@ var renderStatistics = function (ctx, names, times) {
     ctx.fillText(names[index], CLOUD_X0 + CLOUD_BORDER + index * HISTOGRAM_SPAN + HISTOGRAM_W, CLOUD_Y0 + HISTOGRAM_H + FONT_HEIGHT * 4, CLOUD_W);
     ctx.fillText(Math.round(times[index]), CLOUD_X0 + CLOUD_BORDER + index * HISTOGRAM_SPAN + HISTOGRAM_W, CLOUD_Y0 + HISTOGRAM_H + FONT_HEIGHT * 3 - HISTOGRAM_H * coefficient, CLOUD_W);
   }
-
-
-
-}
+};
