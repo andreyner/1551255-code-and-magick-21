@@ -1,3 +1,4 @@
+'use strict';
 const CLOUD_X0 = 100;
 const CLOUD_Y0 = 10;
 const CLOUD_H = 270;
