@@ -1,17 +1,17 @@
 'use strict';
-let PLAYERS_FIRST_NAME = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-let PLAYERS_LAST_NAME = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-let COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-let EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
-let fragment = document.createDocumentFragment();
+const PLAYERS_FIRST_NAME = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+const PLAYERS_LAST_NAME = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+const COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+const EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
+const fragment = document.createDocumentFragment();
 const PLAYER_COUNT = 4;
 
-let playerTemplate = document.querySelector('#similar-wizard-template')
+const playerTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
-let playerList = document.querySelector('.setup-similar-list');
-let userDialog = document.querySelector('.setup');
+const playerList = document.querySelector('.setup-similar-list');
+const userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
 function getRandomInt(min, max) {
