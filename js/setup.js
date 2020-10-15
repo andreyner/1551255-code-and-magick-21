@@ -6,15 +6,18 @@ const EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 const FIRE_BALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 const fragment = document.createDocumentFragment();
 const PLAYER_COUNT = 4;
+const SETUP_START_POSITION =
+{
+  x0: window.dialog.setup.style.left,
+  y: window.dialog.setup.style.top
+};
 
 const playerTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
 const playerList = document.querySelector('.setup-similar-list');
-const userDialog = document.querySelector('.setup');
-const setupOpen = document.querySelector('.setup-open');
-const setupClose = userDialog.querySelector('.setup-close');
+
 const setupWizard = document.querySelector('.setup-wizard');
 
 const wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
@@ -41,51 +44,6 @@ setupWizard.addEventListener('click', function (evt) {
 fireball.addEventListener('click', function () {
   fireball.style.background = FIRE_BALL_COLOR[getRandomInt(0, FIRE_BALL_COLOR.length)];
   fireBallHidden.value = FIRE_BALL_COLOR[getRandomInt(0, FIRE_BALL_COLOR.length)];
-});
-
-var onPopupEscPress = function (evt) {
-  if (evt.key === 'Escape' && (document.activeElement.name === undefined
-    || (document.activeElement.name !== undefined && document.activeElement.name !== "username"))) {
-    evt.preventDefault();
-    closeSetupWindow();
-  }
-};
-var onPopupEnterPress = function (evt) {
-  if (evt.key === 'Enter' && document.activeElement !== undefined && document.activeElement.className === setupClose.className) {
-    evt.preventDefault();
-    closeSetupWindow();
-  }
-};
-
-let openSetupWindow = function () {
-  userDialog.classList.remove('hidden');
-  document.addEventListener('keydown', onPopupEscPress);
-  document.addEventListener('keydown', onPopupEnterPress);
-
-};
-
-setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Enter') {
-    openSetupWindow();
-  }
-});
-
-let closeSetupWindow = function () {
-
-  userDialog.classList.add('hidden');
-  document.removeEventListener('keydown', onPopupEscPress);
-  document.removeEventListener('keydown', onPopupEnterPress);
-};
-
-setupOpen.addEventListener('click', function () {
-
-  openSetupWindow();
-
-});
-setupClose.addEventListener('click', function () {
-
-  closeSetupWindow();
-
 });
 
 
@@ -117,9 +75,11 @@ let createPlayers = function () {
   playerList.appendChild(fragment);
 };
 
-let executeCommonLogic = function () {
+(function () {
   createPlayers();
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
-};
+  window.dialog.setup.style.left = SETUP_START_POSITION.x0;
+  window.dialog.setup.style.top = SETUP_START_POSITION.y0;
+  window.dialog.setup.querySelector('.setup-similar').classList.remove('hidden');
+})();
 
-executeCommonLogic();
+
