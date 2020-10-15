@@ -5,7 +5,11 @@
   const setupOpen = document.querySelector('.setup-open');
   const setupClose = userDialog.querySelector('.setup-close');
   const dialogHandle = userDialog.querySelector('.upload');
-
+  const SETUP_START_POSITION =
+  {
+    x0: userDialog.offsetTop,
+    y0: userDialog.offsetLeft
+  };
   window.dialog = {
     setup: userDialog,
     handle: dialogHandle
@@ -39,8 +43,17 @@
     closeSetupWindow();
   });
 
+  let IsFirstRun = true;
   let openSetupWindow = function () {
     userDialog.classList.remove('hidden');
+    if (IsFirstRun) {
+      SETUP_START_POSITION.x0 = userDialog.offsetLeft;
+      SETUP_START_POSITION.y0 = userDialog.offsetTop;
+      IsFirstRun = false;
+    } else {
+      userDialog.style.top = SETUP_START_POSITION.y0 + 'px';
+      userDialog.style.left = SETUP_START_POSITION.x0 + 'px';
+    }
     document.addEventListener('keydown', onPopupEscPress);
     document.addEventListener('keydown', onPopupEnterPress);
 

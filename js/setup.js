@@ -6,11 +6,7 @@ const EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 const FIRE_BALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 const fragment = document.createDocumentFragment();
 const PLAYER_COUNT = 4;
-const SETUP_START_POSITION =
-{
-  x0: window.dialog.setup.style.left,
-  y: window.dialog.setup.style.top
-};
+
 
 const playerTemplate = document.querySelector('#similar-wizard-template')
   .content
@@ -77,8 +73,6 @@ let createPlayers = function () {
 
 (function () {
   createPlayers();
-  window.dialog.setup.style.left = SETUP_START_POSITION.x0;
-  window.dialog.setup.style.top = SETUP_START_POSITION.y0;
   window.dialog.setup.querySelector('.setup-similar').classList.remove('hidden');
 })();
 
