@@ -24,7 +24,7 @@
     let onMouseUp = function (upEvt) {
       upEvt.preventDefault();
       if (dragged) {
-        var onClickPreventDefault = function (clickEvt) {
+        let onClickPreventDefault = function (clickEvt) {
           clickEvt.preventDefault();
           window.dialog.handle.removeEventListener('click', onClickPreventDefault);
         };

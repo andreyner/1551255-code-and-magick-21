@@ -15,14 +15,14 @@
     handle: dialogHandle
   };
 
-  var onPopupEscPress = function (evt) {
+  let onPopupEscPress = function (evt) {
     if (evt.key === 'Escape' && (document.activeElement.name === undefined
       || (document.activeElement.name !== undefined && document.activeElement.name !== "username"))) {
       evt.preventDefault();
       closeSetupWindow();
     }
   };
-  var onPopupEnterPress = function (evt) {
+  let onPopupEnterPress = function (evt) {
     if (evt.key === `Enter` && document.activeElement !== undefined && document.activeElement.className === setupClose.className) {
       evt.preventDefault();
       closeSetupWindow();
@@ -43,13 +43,13 @@
     closeSetupWindow();
   });
 
-  let IsFirstRun = true;
+  let isFirstRun = true;
   let openSetupWindow = function () {
     userDialog.classList.remove('hidden');
-    if (IsFirstRun) {
+    if (isFirstRun) {
       SETUP_START_POSITION.x0 = userDialog.offsetLeft;
       SETUP_START_POSITION.y0 = userDialog.offsetTop;
-      IsFirstRun = false;
+      isFirstRun = false;
     } else {
       userDialog.style.top = SETUP_START_POSITION.y0 + 'px';
       userDialog.style.left = SETUP_START_POSITION.x0 + 'px';
