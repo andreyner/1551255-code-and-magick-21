@@ -5,6 +5,7 @@
   const setupOpen = document.querySelector('.setup-open');
   const setupClose = userDialog.querySelector('.setup-close');
   const dialogHandle = userDialog.querySelector('.upload');
+  const form = userDialog.querySelector('.setup-wizard-form');
   const SETUP_START_POSITION =
   {
     x0: userDialog.offsetTop,
@@ -15,14 +16,14 @@
     handle: dialogHandle
   };
 
-  let onPopupEscPress = function (evt) {
+  const onPopupEscPress = function (evt) {
     if (evt.key === 'Escape' && (document.activeElement.name === undefined
       || (document.activeElement.name !== undefined && document.activeElement.name !== "username"))) {
       evt.preventDefault();
       closeSetupWindow();
     }
   };
-  let onPopupEnterPress = function (evt) {
+  const onPopupEnterPress = function (evt) {
     if (evt.key === `Enter` && document.activeElement !== undefined && document.activeElement.className === setupClose.className) {
       evt.preventDefault();
       closeSetupWindow();
@@ -44,7 +45,7 @@
   });
 
   let isFirstRun = true;
-  let openSetupWindow = function () {
+  const openSetupWindow = function () {
     userDialog.classList.remove('hidden');
     if (isFirstRun) {
       SETUP_START_POSITION.x0 = userDialog.offsetLeft;
@@ -59,9 +60,18 @@
 
   };
 
-  let closeSetupWindow = function () {
+  const closeSetupWindow = function () {
     userDialog.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
     document.removeEventListener('keydown', onPopupEnterPress);
   };
+
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      userDialog.classList.add('hidden');
+    }, window.util.errorHandler);
+    evt.preventDefault();
+  });
+
 })();
