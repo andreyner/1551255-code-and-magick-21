@@ -1,6 +1,7 @@
 'use strict';
 (function () {
-  let URL = 'https://21.javascript.pages.academy/code-and-magick/data';
+  const GET_WIZARD_URL = 'https://21.javascript.pages.academy/code-and-magick/data';
+  const SEND_WIZARD_URL = 'https://21.javascript.pages.academy/code-and-magick';
   let StatusCode = {
     OK: 200
   };
@@ -24,7 +25,7 @@
         onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
       });
       xhr.timeout = TIMEOUT_IN_MS;
-      xhr.open('GET', URL);
+      xhr.open('GET', GET_WIZARD_URL);
       xhr.send();
     },
     save: function (data, onSuccess, onError) {
@@ -44,7 +45,7 @@
         onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
       });
       xhr.timeout = TIMEOUT_IN_MS;
-      xhr.open('POST', URL);
+      xhr.open('POST', SEND_WIZARD_URL);
       xhr.send(data);
     }
   };
