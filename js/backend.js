@@ -15,15 +15,19 @@
         if (xhr.status === StatusCode.OK) {
           onSuccess(xhr.response);
         } else {
-          onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+          if (onError) {
+            onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+          }
         }
       });
-      xhr.addEventListener('error', function () {
-        onError('Произошла ошибка соединения');
-      });
-      xhr.addEventListener('timeout', function () {
-        onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
-      });
+      if (onError) {
+        xhr.addEventListener('error', function () {
+          onError('Произошла ошибка соединения');
+        });
+        xhr.addEventListener('timeout', function () {
+          onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
+        });
+      }
       xhr.timeout = TIMEOUT_IN_MS;
       xhr.open('GET', GET_WIZARD_URL);
       xhr.send();
@@ -35,15 +39,19 @@
         if (xhr.status === StatusCode.OK) {
           onSuccess(xhr.response);
         } else {
-          onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+          if (onError) {
+            onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+          }
         }
       });
-      xhr.addEventListener('error', function () {
-        onError('Произошла ошибка соединения');
-      });
-      xhr.addEventListener('timeout', function () {
-        onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
-      });
+      if (onError) {
+        xhr.addEventListener('error', function () {
+          onError('Произошла ошибка соединения');
+        });
+        xhr.addEventListener('timeout', function () {
+          onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
+        });
+      }
       xhr.timeout = TIMEOUT_IN_MS;
       xhr.open('POST', SEND_WIZARD_URL);
       xhr.send(data);
